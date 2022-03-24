@@ -8,12 +8,39 @@ namespace CSVProcess
 {
     public class Mng
     {
+        OnePais[] AllList;
         public void Run()
         {
             
             string fileName = @"C:\Users\haim\source\repos\Tech-CSV\CSVProcess\Data\Lotto.csv";
             PaisFile pais = new PaisFile();
-            pais.Load(fileName);
+            AllList = pais.Load(fileName);
+        }
+
+        public int GetNumerOfTimesThat4ExistedInFirstNumer()
+        {
+            int ret = 0;
+            for (int i = 0; i < AllList.Length-1; i++)
+            {
+                if(AllList[i].numbers[0]==4)
+                {
+                    ret++;
+                }
+            }
+            return ret;
+        }
+
+        public int GetNumerOfTimesThatExistedInFirstNumer(byte digit)
+        {
+            int ret = 0;
+            for (int i = 0; i < AllList.Length - 1; i++)
+            {
+                if (AllList[i].numbers[0] == digit)
+                {
+                    ret++;
+                }
+            }
+            return ret;
         }
     }
 }
